@@ -1,7 +1,7 @@
 <template>
-   <div class="d-flex justify-content-between bg-dark p-3">
-      <h1 class="text-uppercase text-danger">Boolflix</h1>
-      <div class="text-align-center align-items-end d-flex">
+   <div class="d-flex justify-content-between bg-dark p-3 align-items-center">
+      <img src="https://fontmeme.com/temporary/a4140465225844d06b4c34e9e5e4faf6.png" alt="">
+      <div class="align-items-end d-flex">
         <input type="text" class="input-group-text" placeholder="Search a FIlm/TV Series" @keyup.enter="$emit('SearchUser',InpuText)" v-model="InpuText">
         <button class="btn bg-light btnSearch">Search</button>
       </div>
@@ -13,7 +13,7 @@ export default {
     name:'HeaderComp',
     data(){
         return{
-            InpuText: ''
+            InpuText:''
         }
     }
 }
