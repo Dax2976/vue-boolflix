@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <div class="row">
-          <h2 class="text-uppercase text-center">Tv Series: </h2>
+          <h2 class="text-uppercase text-center" v-if="Tvseries.length >0 ">Tv Series: </h2>
           <div class="col-3" v-for="(element, index) in Tvseries" :key="index">
               <div class="">Titolo: {{element.title}}</div>
                 <div class="">Titolo Originale: {{element.original_title}}</div>
