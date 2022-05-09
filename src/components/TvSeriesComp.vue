@@ -2,7 +2,7 @@
   <div class="container">
       <div class="row">
           <h2 class="text-uppercase text-center">Tv Series: </h2>
-          <div class="col-3" v-for="(element, index) in TVseries" :key="index">
+          <div class="col-3" v-for="(element, index) in Tvseries" :key="index">
               <div class="">Titolo: {{element.title}}</div>
                 <div class="">Titolo Originale: {{element.original_title}}</div>
                 <div class="">Voto: {{element.vote_average}}</div>
@@ -10,7 +10,7 @@
                 <div class="d-flex justify-content-between">
                     <span class="">Lingua:</span>
                     <div class="Flag">
-                        <img :src="TVFlag(element)" alt="" class="flag">
+                        <img :src="TVflag(element)" alt="" class="flag">
                     </div>
                 </div>
           </div>
@@ -22,7 +22,7 @@
 export default {
     name:'TvSeriesComp',
     props:{
-        TVseries: Array
+        Tvseries: Array
     },
     methods:{
          TVflag(object){
