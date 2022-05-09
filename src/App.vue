@@ -1,22 +1,36 @@
 <template>
   <div id="app">
-    <div class="d-flex justify-content-between bg-dark p-3">
-      <h1 class="text-uppercase text-danger">Boolflix</h1>
-      <div class="text-align-center align-items-end d-flex">
-        <input type="text" class="input-group-text" placeholder="Search a FIlm/TV Series">
-        <button class="btn bg-light btnSearch">Search</button>
-      </div>
-
-    </div>
+    <HeaderComp @SearchUser='MySearch()'/>
   </div>
 </template>
 
 <script>
-
+import 'bootstrap'
+import HeaderComp from '@/components/HeaderComp.vue'
+import axios from 'axios'
 export default {
   name: 'App',
   components: {
-    
+      HeaderComp,
+      
+  },
+  data(){
+    return{
+      ArrayMovies: [],
+      apiKey: 'b157e50a3e85cf6335dc9aa27f79bd76',
+      inputSearch: ''
+    }
+  },
+
+  methods:{
+    MySearch(text){
+      this.inputSearch = text
+      // console.log(this.inputSearch);
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&query=${text}=1&include_adult=false`).then((response)=>{
+        this.ArrayMovies = response.data.response
+        console.log(this.ArrayMovies)
+      })
+    }
   }
 }
 </script>
@@ -27,9 +41,5 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.btnSearch{
-  margin-left: 10px ;
 }
 </style>
