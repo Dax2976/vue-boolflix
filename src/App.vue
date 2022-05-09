@@ -33,8 +33,7 @@ export default {
       console.log(this.inputSearch);
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=it-IT&query=${text}&page=1`).then((response)=>{
         this.ArrayMovies = response.data.results
-        console.log(this.ArrayMovies)
-        
+        //console.log(this.ArrayMovies)
       })
     }
   }
