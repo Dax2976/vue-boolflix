@@ -14,7 +14,7 @@
                             <div>
                                 <span class="me-3">Voto: </span>
                                 <span class="fs-2" :class="StarsVote(element) > 1? 'text-warning' : ''">&#9733;</span>
-                               <span class="fs-2" :class="StarsVote(element) > 2? 'text-warning' : ''">&#9733;</span>
+                                <span class="fs-2" :class="StarsVote(element) > 2? 'text-warning' : ''">&#9733;</span>
                                 <span class="fs-2" :class="StarsVote(element) > 3? 'text-warning' : ''">&#9733;</span>
                                 <span class="fs-2" :class="StarsVote(element) > 4? 'text-warning' : ''">&#9733;</span>
                                 <span class="fs-2" :class="StarsVote(element) > 5? 'text-warning' : ''">&#9733;</span>

@@ -9,10 +9,11 @@
         <a href="#">La Mia Lista</a>
       </div>
       <div class="align-items-end align-items-center d-flex">
-        <input type="text" class="input-group-text inpUt" placeholder="Search a FIlm/TV Series" @keyup.enter="$emit('SearchUser',InpuText)" v-model="InpuText">
-        <button class="btn btnSearch">Search</button>
+        <input type="text" class="input-group-text inpUt" placeholder="Search FIlm / TVSeries" @keyup.enter="$emit('SearchUser',InpuText)" v-model="InpuText">
+        <button class="btn btnSearch"><font-awesome-icon icon="fa-solid fa-magnifying-glass fa-5x"/></button>
         <a href="#">Bambini</a>
         <img src="https://occ-0-2637-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABeNs0Y10aoAgJ48Vej3YQiWbOgMCkTEgNd33LRKOgL6CvLgRC95Mu4cMDLFLyFLsuWKfM2grv6Or3qTpPOU-FwF3B9bKSH0.png?r=fcc" alt="">
+        <button class="btn btnSearch"><font-awesome-icon icon="fa-solid fa-arrow-down" class="text-white p-1 mx-2"/></button>
       </div>
     </div>
 </template>
@@ -53,4 +54,12 @@ a{
 .Netflixbar{
   background-color: #141414;
 }
+
+.inpUt{
+  background-color: #141414;
+  color: white;
+  border: none;
+}
+
+
 </style>

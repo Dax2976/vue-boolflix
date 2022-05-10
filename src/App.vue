@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <HeaderComp @SearchUser='MySearch'/>
+    <MovieTrailer/>
     <MainComp :movies='ArrayMovies' :series="TVseriesArray"/>
 
   </div>
@@ -11,11 +12,13 @@ import 'bootstrap'
 import HeaderComp from '@/components/HeaderComp.vue'
 import axios from 'axios'
 import MainComp from '@/components/MainComp.vue'
+import MovieTrailer from '@/components/MovieTrailer.vue'
 export default {
   name: 'App',
   components: {
       HeaderComp,
       MainComp,
+      MovieTrailer,
       
   },
   data(){
@@ -50,5 +53,10 @@ export default {
 
 body{
   background-color:#141414;
+}
+#abs{
+    position: absolute;
+    top: 10px;
+    
 }
 </style>
