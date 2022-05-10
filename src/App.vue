@@ -47,4 +47,8 @@ export default {
 
 <style lang="scss">
 @import'@/assets/scss/style.scss';
+
+body{
+  background-color:#141414;
+}
 </style>
