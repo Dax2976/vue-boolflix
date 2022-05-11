@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <div class="row">
-          <h2 class="text-uppercase text-center text-white" v-if="Tvseries.length >0 ">Tv Series: </h2>
+          <h2 class="text-uppercase text-center text-danger mt-5" v-if="Tvseries.length >0 ">Tv Series :</h2>
           <div class="col-4 mb-5 d-flex justofy-content-center" v-for="(element, index) in Tvseries" :key="index">
                <div class="flip">
                     <div class="flip-inner">

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <h2 class="text-uppercase text-center text-white" v-if="films.length >0">Film : </h2>
+            <h2 class="text-uppercase text-center text-danger mt-5" v-if="films.length >0">Film :</h2>
             <div class="col-4 mb-5 d-flex justify-content-center" v-for="(element, index) in films" :key="index">
                 <div class="flip">
                     <div class="flip-inner">
