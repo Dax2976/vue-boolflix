@@ -8,7 +8,7 @@
                         <div class="front-card">
                             <img :src="`https://image.tmdb.org/t/p/w342/${element.poster_path}`" :alt="`poster of ${element.original_title}`" class="w-100">
                         </div>
-                        <div class="card-back bg-dark p-3">
+                        <div class="card-back bg-dark p-3" @mouseover="ActorGet(element.id)">
                             <div><strong>Titolo:</strong> {{element.name}}</div>
                             <p><strong>Titolo Originale:</strong> {{element.orginal_name}}</p>
                             <div>
@@ -22,9 +22,18 @@
                             <br>
                             <p><strong>Overview:</strong> {{element.overview}}</p>
                             <div class="d-flex justify-content-between align-items-center py-2 px-4">
-                                <span><strong>Lingua:</strong></span>
-                                <div class="flagCont">
-                                    <img :src="TVflag(element)" alt="" class="w-100">
+                                <div class="" v-if="ActorArray.length>0">
+                                    <h3 class="text-uppercase">Attori: </h3>
+                                    <div class="text-start" v-for="(actor, index) in ActorArray" :key="index">
+                                        <strong>Nome: </strong>
+                                        <span class="ms-2">{{ActorArray[index].name}}</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center py-2 px-4">
+                                     <span><strong>Lingua:</strong></span>
+                                    <div class="flagCont">
+                                        <img :src="TVflag(element)" alt="" class="w-100">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -36,10 +45,17 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name:'TvSeriesComp',
     props:{
         Tvseries: Array
+    },
+    data(){
+        return{
+            apiKey:'b157e50a3e85cf6335dc9aa27f79bd76',
+            ActorArray:[]
+        }
     },
     methods:{
          TVflag(object){
@@ -59,6 +75,11 @@ export default {
         },
         StarsVote(object){
             return Math.ceil(object.vote_average / 2)
+        },
+        ActorGet(movie){
+            axios.get(`https://api.themoviedb.org/3/movie/${movie}/credits?api_key=${this.apiKey}&language=it-IT`).then((response)=>{
+                this.ActorArray=response.data.cast.slice(0,5)
+            })
         }
     }
 }

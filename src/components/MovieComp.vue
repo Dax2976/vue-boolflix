@@ -8,10 +8,11 @@
                         <div class="front-card">
                             <img :src="`https://image.tmdb.org/t/p/w342/${element.poster_path}`" :alt="`poster of ${element.original_title}`" class="w-100">
                         </div>
-                        <div class="card-back bg-dark p-3">
+                        <div class="card-back bg-dark p-3" @mouseover="ActorGet(element.id)">
                              <img :src="`https://image.tmdb.org/t/p/w342/${element.backdrop_path}`" :alt="`poster of ${element.original_title}`" class="w-100">
                             <div><strong>Titolo:</strong> {{element.title}}</div>
                             <p><strong>Titolo Originale:</strong> {{element.original_title}}</p>
+                            <p><strong>Genere: </strong>{{element.genre_ids}}</p>
                             <div>
                                 <span class="me-3">Voto: </span>
                                 <span class="fs-2" :class="StarsVote(element) > 1? 'text-warning' : ''">&#9733;</span>
@@ -22,6 +23,13 @@
                             </div>
                             <br>
                             <p><strong>Overview:</strong> {{element.overview}}</p>
+                            <div v-if="ActorArray.length>0">
+                                <h3 class="text-uppercase">Attori: </h3>
+                                <div class="text-start" v-for="(actor, index) in ActorArray" :key="index">
+                                    <strong>Nome: </strong>
+                                    <span class="ms-2">{{ActorArray[index].name}}</span>
+                                </div>
+                            </div>
                             <div class="d-flex justify-content-between align-items-center py-2 px-4">
                                 <span><strong>Lingua:</strong></span>
                                 <div class="flagCont">
@@ -37,10 +45,19 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name:'MovieComp',
     props: {
-        films: Array
+        films: Array,
+        
+    },
+    data(){
+        return{
+            apiKey: 'b157e50a3e85cf6335dc9aa27f79bd76',
+            ActorArray: [],
+            GenerArray:[]
+        }
     },
     methods:{
         MovieFlag(object){
@@ -62,13 +79,16 @@ export default {
         StarsVote(object){
             return Math.ceil(object.vote_average / 2)
         },
-        // Hiddenclass(element){
-        //     if(element.title === element.original.title){
-        //         let hidden = document.getElementById("hidden")
-        //         hidden.classList.add("hidden")
-        //     }
-            
-        // }
+        ActorGet(movie){
+            axios.get(`https://api.themoviedb.org/3/movie/${movie}/credits?api_key=${this.apiKey}&language=it-IT`).then((response)=>{
+                this.ActorArray=response.data.cast.slice(0,5)
+            })
+        },
+        GenerGet(){
+            axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}&language=it-IT`).then((response)=>{
+                this.GenerArray=response.data.result
+            })
+        }
     }
 }
 </script>
