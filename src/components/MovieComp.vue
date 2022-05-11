@@ -21,6 +21,7 @@
                                 <span class="fs-2" :class="StarsVote(element) > 4? 'text-warning' : ''">&#9733;</span>
                                 <span class="fs-2" :class="StarsVote(element) > 5? 'text-warning' : ''">&#9733;</span>
                             </div>
+                            <span class="me-3 text-danger mb-5"><font-awesome-icon icon="fa-solid fa-heart" /> {{element.vote_count}}</span>
                             <br>
                             <p><strong>Overview:</strong> {{element.overview}}</p>
                             <div v-if="ActorArray.length>0">
@@ -79,6 +80,7 @@ export default {
         StarsVote(object){
             return Math.ceil(object.vote_average / 2)
         },
+        
         ActorGet(movie){
             axios.get(`https://api.themoviedb.org/3/movie/${movie}/credits?api_key=${this.apiKey}&language=it-IT`).then((response)=>{
                 this.ActorArray=response.data.cast.slice(0,5)
@@ -112,7 +114,7 @@ export default {
     position: relative;
     text-align: center;
     transform-style: preserve-3d;
-    transition: 0.5s;
+    transition: 1s;
     width: 100%;
     height: 100%;
 }
@@ -141,6 +143,7 @@ export default {
     color: white;
     transform: rotateY(180deg);
 }
+
 
 // .hidden{
 //     display: none;

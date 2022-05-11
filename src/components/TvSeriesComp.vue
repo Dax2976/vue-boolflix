@@ -20,6 +20,7 @@
                                 <span class="fs-2" :class="StarsVote(element) > 4? 'text-warning' : ''">&#9733;</span>
                                 <span class="fs-2" :class="StarsVote(element) > 5? 'text-warning' : ''">&#9733;</span>
                             </div>
+                            <span class="me-3 text-danger mb-5"><font-awesome-icon icon="fa-solid fa-heart" /> {{element.vote_count}}</span>
                             <br>
                             <p><strong>Overview:</strong> {{element.overview}}</p>
                             <div class="d-flex justify-content-between align-items-center py-2 px-4">
