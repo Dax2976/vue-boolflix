@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import '@fontsource/bebas-neue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faMagnifyingGlass,faArrowRight,faArrowDown,faBell,faHeart} from '@fortawesome/free-solid-svg-icons'
