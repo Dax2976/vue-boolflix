@@ -9,6 +9,7 @@
                             <img :src="`https://image.tmdb.org/t/p/w342/${element.poster_path}`" :alt="`poster of ${element.original_title}`" class="w-100">
                         </div>
                         <div class="card-back bg-dark p-3" @mouseover="ActorGet(element.id)">
+                            <img :src="`https://image.tmdb.org/t/p/w342/${element.backdrop_path}`" :alt="`poster of ${element.original_title}`" class="w-100">
                             <div><strong>Titolo:</strong> {{element.name}}</div>
                             <p><strong>Titolo Originale:</strong> {{element.orginal_name}}</p>
                             <div>
